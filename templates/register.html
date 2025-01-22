@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Регистрация{% endblock %}
+{% block content %}
+    <h2>Регистрация</h2>
+    <form method="POST" enctype="multipart/form-data" class="form">
+        <label>Имя: <input type="text" name="first_name" required></label>
+        <label>Фамилия: <input type="text" name="last_name" required></label>
+        <label>Дата рождения: <input type="date" name="birth_date" required></label>
+        <label>Увлечения: <textarea name="hobbies" required></textarea></label>
+        <label>Аватар: <input type="file" name="avatar" required></label>
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="list-errors">
+          {% for message in messages %}
+            <li class="error">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+{% endblock %}
